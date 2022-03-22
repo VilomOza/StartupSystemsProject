@@ -5,16 +5,25 @@
   <%- include('../partials/head') %>
 </head>
 
-<body>
+<body >
   <header>
     <%- include('../partials/nav', { hideSignIn: true }) %>
   </header>
 
+<section class='hero is-fullheight' style = "background-image: url('static/header_frame.png'); background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+height: 100%;">
+  <h2 class="subtitle has-text-warning">Log in to your existing account</a></h2>
 
-  <form id="login-form">
-    <input type="text" name="email" placeholder="Your user name" />
-    <input type="password" name="password" id="password" />
-    <button>
+  <form id="login-form" class="hero-body" >
+    
+    <input class = "input is-medium" type="text" name="email" placeholder="Your user name" /></p>
+  
+    <input class = "input is-medium" type="password" name="password" id="password" placeholder="Password"/></p>
+
+    <button class = 'button is-medium'>
       Sign In
     </button>
     <div id="login-error">
@@ -22,6 +31,8 @@
     </div>
     </div>
   </form>
+</section>
+
 </body>
 <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth-compat.js"></script>

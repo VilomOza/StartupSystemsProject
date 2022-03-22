@@ -10,19 +10,21 @@
     <%- include('../partials/nav') %>
   </header>
 
-  <div class="container">
-    Sign Up for a new account or <a href="/sign-in">click here to sign in with an existing account</a>
-    <form id="login-form">
-      <label>Login</label>
-      <input id="email" type="text" name="email" />
-      <label>Password</label>
-      <input type="password" name="password" />
-      <button>Log in</button>
+  <div  class='hero is-fullheight' style = "background-image: url('static/header_frame.png'); background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;">
+  <h2 class="subtitle has-text-warning">Sign Up for a new account</a></h2>
+  <h2 class="subtitle has-text-warning"><a href="/sign-in">Click here to sign in with an existing account</a></h2>
+
+    <form id="login-form" class="hero-body" >
+      <input class = "input is-medium" id="email" type="text" name="email" />
+]      <input class = "input is-medium" type="password" name="password" />
+      <button class = 'button is-medium'>Sign Up</button>
     </form>
     <div id="login-error" style="display: none;">
-    </div>
-    <a href="/dashboard">Dashboard</a>
-  </div>
+   
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app-compat.js"></script>
