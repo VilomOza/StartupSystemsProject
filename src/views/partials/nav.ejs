@@ -1,40 +1,3 @@
-<!--nav class="navbar">
-  <div class="container">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        <figure class="image">
-          <img class="is-rounded" src="https://images.unsplash.com/photo-1534351450181-ea9f78427fe8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Logo">
-        </figure>
-      </a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <% if(locals.email) { %>
-      <div id="navbarMenu" class="navbar-menu">
-        <div class="navbar-end">
-          <a href="/dashboard" class="navbar-item">
-            <%= email %>
-              <i class="material-icons">person_outline</i>
-          </a>
-        </div>
-      </div>
-      <% } else if(locals.hideSignIn) { %>
-      <% } else { %>
-        <div id="navbarMenu" class="navbar-menu">
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <a href="/sign-in" class="button is-primary">Sign In
-              </a>
-            </div>
-          </div>
-        </div>
-      <% }%>
-  </div>
-</nav-->
-
 <nav class="navbar is-black" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
@@ -54,45 +17,40 @@
       <a class="navbar-item" href='/'>
         BAKKUS
       </a>
-
-      <!--a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div-->
     </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a href="/sign-up"  class="button is-black">
-            Sign up
-          </a>
-          <a href="/sign-in" class="button is-black">
-            Log in
+    <!-- if the user is signed-up -->
+    <% if(locals.email) { %>
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <a href="/sessionLogout" class="navbar-item">
+            <span class="material-icons mr-2">person_outline</span> <%= email %> (log out)
           </a>
         </div>
       </div>
-    </div>
+    <% } else if(locals.hideSignIn) { %>
+    <% } else { %>
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a href="/sign-in" class="button is-black">
+              <div class="columns">
+                <div class="column">
+                  Sign In
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="navbar-item">
+            <a href="/sign-up" class="button is-black">
+              <div class="columns">
+                <div class="column">
+                  Sign Up
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% }%>
   </div>
 </nav>
