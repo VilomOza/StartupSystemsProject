@@ -14,5 +14,11 @@
       "source": "**",
       "function": "app"
     }]
+  },
+  "emulators": {
+    "hosting": {
+      "host": "localhost",
+      "port": "5002"
+    }
   }
 }
