@@ -5,8 +5,6 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const admin = require("firebase-admin");
 const app = express();
-const port = process.env.PORT || 8080;
-
 
 const serviceAccount = require("./../config/serviceAccountKey.json");
 const userFeed = require("./app/user-feed");
@@ -35,6 +33,7 @@ app.use("/static", express.static("static/"));
 //index page
 app.get("/", function (req, res) {
   res.render("pages/index");
+  debugger
 });
 
 app.get("/sign-in", function (req, res) {

@@ -11,34 +11,15 @@
     <%- include('../partials/nav', { email: user.email }) %>
   </header>
 
+  <section id="parallax-1" class="hero is-large " style = "background-image: url('static/header_frame.png'); 
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+height: 100%;">
   <div class="container">
-    <div class="columns">
-      <div class="column is-3 " style="text-align: right;">
-        <aside class="menu">
-          <p class="menu-label">
-            General
-          </p>
-          <ul class="menu-list">
-            <li><a>Feed</a></li>
-
-          </ul>
-        </aside>
-      </div>
-      <div class="column is-4">
-        <div class="mb-6">
-          <div class="has-text-weight-bold mb-2">
-            Share a new post
-          </div>
-          <form action="/dog-messages" method="post">
-            <input class="input" type="text" name="message" placeholder="Went to the dog park today" />
-            <button class="button mt-2">Ruff!</button>
-          </form>
-        </div>
-        <div class="feed-stream">
-          <%- include('../partials/feed-stream', { feed: feed }) %>
-        </div>
-      </div>
-    </div>
+    <img src = "/static/search.png" />
+    <img src = "/static/add.png" />
   </div>
 
 </body>
