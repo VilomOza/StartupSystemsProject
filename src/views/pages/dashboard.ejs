@@ -35,7 +35,7 @@ background-position: top;
 background-repeat: no-repeat;
 background-size: cover;
 height:100%">
-<div class="columns" style="margin: 0%">
+<form id="add-wine" class="columns" style="margin: 0%">
   <div class="column is-two-fifths">
     <div class="control">
 
@@ -45,7 +45,7 @@ height:100%">
         </div>
         <div class="field-body">
           <div class="field">
-            <input class="input" type="text" placeholder="eg: Chateau de Woof">
+            <input class="input" name="wineName" type="text" placeholder="eg: Chateau de Woof">
           </div>
         </div>
       </div>  
@@ -56,7 +56,7 @@ height:100%">
         </div>
         <div class="field-body">
           <div class="field">
-            <input class="input" type="text" placeholder="eg: Bordeaux">
+            <input class="input" name="region" type="text" placeholder="eg: Bordeaux">
           </div>
         </div>
       </div> 
@@ -67,7 +67,7 @@ height:100%">
         </div>
         <div class="field-body">
           <div class="field">
-            <input class="input" type="text" placeholder="eg: Red">
+            <input class="input" name="type" type="text" placeholder="eg: Red">
           </div>
         </div>
       </div> 
@@ -78,7 +78,7 @@ height:100%">
         </div>
         <div class="field-body">
           <div class="field">
-            <input class="input" type="text" placeholder="eg: Pinot Noir">
+            <input class="input" name="grape" type="text" placeholder="eg: Pinot Noir">
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@ height:100%">
         </div>
         <div class="field-body">
           <div class="field">
-            <input class="input" type="text" placeholder="eg: 3 X 750ml">
+            <input class="input" name="quantity" type="text" placeholder="eg: 3 X 750ml">
           </div>
         </div>
       </div>
@@ -100,14 +100,13 @@ height:100%">
         </div>
         <div class="field-body">
           <div class="field">
-            <textarea class="textarea" placeholder="eg: Saving it for graduation party"></textarea>
+            <textarea class="textarea" name="notes" placeholder="eg: Saving it for graduation party"></textarea>
           </div>
         </div>
       </div>
 
 
     </div>
-    
   </div>
 
   <div class="column" >
@@ -117,10 +116,56 @@ height:100%">
       
     </button>
   </div>
-</div>
+</form>
 </section>
 </body>
 
 <%- include('../partials/footer') %>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth-compat.js"></script>
+
+<script>
+
+  window.onload = () => {
+    const firebaseConfig = {
+      apiKey: "AIzaSyD2mq8xNyBnsS_toanHaMopNS3umfEzC-k",
+      authDomain: "winecellar2022.firebaseapp.com",
+      projectId: "winecellar2022",
+      storageBucket: "winecellar2022.appspot.com",
+      messagingSenderId: "971652091709",
+      appId: "1:971652091709:web:329a62af128c629f267f54"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+
+    document
+            .getElementById("add-wine")
+            .addEventListener("submit", (event) => {
+              event.preventDefault();
+              const wineName = event.target.wineName.value;
+              const region = event.target.region.value;
+              const type = event.target.type.value;
+              const grape = event.target.grape.value;
+              const quantity = event.target.quantity.value;
+              const notes = event.target.notes.value;
+
+              fetch('/addWine',{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                  wineName,
+                  region,
+                  type,
+                  grape,
+                  quantity,
+                  notes
+                })
+              }).then(()=> {
+                window.location.assign('/cellar')
+              })
+            })
+  };
+</script>
 
 </html>

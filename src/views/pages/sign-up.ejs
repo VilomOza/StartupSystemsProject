@@ -23,8 +23,8 @@
 ]      <input class = "input is-medium" type="password" name="password" />
       <button class = 'button is-medium'>Sign Up</button>
     </form>
-    <div id="login-error" style="display: none;">
-   
+    <div id="login-error" style="display: none;"></div>
+  </div>
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app-compat.js"></script>
@@ -67,17 +67,12 @@
              fetch('/sessionLogin',{
                method: 'POST',
                headers: {'Content-Type': 'application/json'},
-               body: JSON.stringify({idToken})
+               body: JSON.stringify({idToken, signInType: 'register'})
              }).then(()=> {
                window.location.assign('/dashboard')
              })
           })
         })
-        //.catch((error) => {
-          //const errorCode = error.code;
-          //const errorMessage = error.message;
-          // ..
-        //});
 
         return false;
       });

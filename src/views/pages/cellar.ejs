@@ -43,23 +43,16 @@ height:100%">
     </tr>
   </thead>
   <tbody>
+  <% for(var i=0; i<wines.length; i++) { %>
     <tr>
-      <th>Cheateau de Woof</th>
-      <td>Bordeaux</td>
-      <td>Red</td>
-      <td>Pinot Noir</td>
-      <td>3x 750 ml</td>
-      <td>Saving for graduation party</td>
+      <th><%= wines[i].data().wineName %></th>
+      <td><%= wines[i].data().region %></td>
+      <td><%= wines[i].data().type %></td>
+      <td><%= wines[i].data().grape %></td>
+      <td><%= wines[i].data().quantity %></td>
+      <td><%= wines[i].data().notes %></td>
     </tr>
-
-    <tr>
-      <th>Cheateau de Meow</th>
-      <td>Bordeaux special</td>
-      <td>White</td>
-      <td>Pinot Noir</td>
-      <td>5x 750 ml</td>
-      <td>Anniversary present</td>
-    </tr>
+  <% } %>
   </tbody>
 </table>
 
