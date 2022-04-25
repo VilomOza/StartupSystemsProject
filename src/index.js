@@ -7,7 +7,6 @@ const admin = require("firebase-admin");
 const app = express();
 const port = process.env.PORT || 8080;
 
-
 const serviceAccount = require("./../config/serviceAccountKey.json");
 const userFeed = require("./app/user-feed");
 const authMiddleware = require("./app/auth-middleware");
@@ -35,6 +34,7 @@ app.use("/static", express.static("static/"));
 //index page
 app.get("/", function (req, res) {
   res.render("pages/index");
+  debugger
 });
 
 app.get("/sign-in", function (req, res) {
@@ -45,10 +45,26 @@ app.get("/sign-up", function (req, res) {
   res.render("pages/sign-up");
 });
 
-app.get("/dashboard", authMiddleware, async function (req, res) {
-  const feed = await userFeed.get();
-  res.render("pages/dashboard", { user: req.user, feed });
-});
+//Comment the next two blocks of code when sign in works
+app.get("/dashboard", function(req,res){
+  res.render("pages/dashboard")
+})
+
+app.get("/cellar", function(req,res){
+  res.render("pages/cellar")
+})
+
+//Uncomment the following two blocks of code to use dashboard in sign in
+
+//app.get("/dashboard", authMiddleware, async function (req, res) {
+ // const feed = await userFeed.get();
+ // res.render("pages/dashboard", { user: req.user, feed });
+//});
+
+//app.get("/cellar", authMiddleware, async function (req, res) {
+ // const feed = await userFeed.get();
+ // res.render("pages/cellar", { user: req.user, feed });
+//});
 
 app.post("/sessionLogin", async (req, res) => {
   const idToken = req.body.idToken.toString();
@@ -83,4 +99,9 @@ app.post("/dog-messages", authMiddleware, async (req, res) => {
   }
 });
 
-exports.app = functions.https.onRequest(app);
+//Uncomment the following to not run on local server
+//exports.app = functions.https.onRequest(app);
+
+//comment out the next two lines to stop running on local server
+app.listen(port);
+console.log("Server started at http://localhost:" + port);

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head') %>
+
+</head>
+
+<body >
+  <header>
+    <%- include('../partials/nav') %>
+  </header>
+
+<div class="tabs is-toggle is-centered is-large" style="margin: 0%; background-color: rgb(56, 40, 40)">
+  <ul>
+    <li>
+      <a href="/dashboard">
+        <span>Add Wine</span>
+      </a>
+    </li>
+    <li class="is-active">
+      <a href="/cellar">
+        <span>Your Wine Cellar</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<section class="hero is-fullheight" style = "background-image: url('https://images.unsplash.com/photo-1534655882117-f9eff36a1574?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80');
+background-attachment: fixed;
+background-position: top;
+background-repeat: no-repeat;
+background-size: cover;
+height:100%">
+<table class="table is-hoverable is-fullwidth is-bordered" >
+  <thead>
+    <tr>
+      <th><abbr title="Name">Name</abbr></th>
+      <th><abbr title="Region">Region</abbr></th>
+      <th><abbr title="Type">Type</abbr></th>
+      <th><abbr title="Grape">Grape</abbr></th>
+      <th><abbr title="Quantity">Quantity</abbr></th>
+      <th><abbr title="Notes">Notes</abbr></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Cheateau de Woof</th>
+      <td>Bordeaux</td>
+      <td>Red</td>
+      <td>Pinot Noir</td>
+      <td>3x 750 ml</td>
+      <td>Saving for graduation party</td>
+    </tr>
+
+    <tr>
+      <th>Cheateau de Meow</th>
+      <td>Bordeaux special</td>
+      <td>White</td>
+      <td>Pinot Noir</td>
+      <td>5x 750 ml</td>
+      <td>Anniversary present</td>
+    </tr>
+  </tbody>
+</table>
+
+</section>
+
+</body>
+<%- include('../partials/footer') %>
+</html>

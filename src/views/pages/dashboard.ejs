@@ -8,39 +8,117 @@
 
 <body>
   <header>
-    <%- include('../partials/nav', { email: user.email }) %>
+    <%- include('../partials/nav') %>
   </header>
 
-  <div class="container">
-    <div class="columns">
-      <div class="column is-3 " style="text-align: right;">
-        <aside class="menu">
-          <p class="menu-label">
-            General
-          </p>
-          <ul class="menu-list">
-            <li><a>Feed</a></li>
+<div class="tabs is-toggle is-centered is-large" style="margin: 0%; background-color: rgb(56, 40, 40)">
+  <ul>
+    <li class="is-active" style="background-color: chocolate;">
+      <a href="/dashboard1">
+        
+        <span style="text-align: center">Add Wine</span>
+      </a>
+    </li>
+    <li>
+      <a href="/cellar">
+        
+        <span style="text-align: center">Your Wine Cellar</span>
+      </a>
+    </li>
+  </ul>
+</div>
 
-          </ul>
-        </aside>
-      </div>
-      <div class="column is-4">
-        <div class="mb-6">
-          <div class="has-text-weight-bold mb-2">
-            Share a new post
+
+<section class="hero is-fullheight" style = "background-image: url('https://images.unsplash.com/photo-1534655882117-f9eff36a1574?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80');
+background-attachment: fixed;
+background-position: top;
+background-repeat: no-repeat;
+background-size: cover;
+height:100%">
+<div class="columns" style="margin: 0%">
+  <div class="column is-two-fifths">
+    <div class="control">
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label" style="color:white">Name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <input class="input" type="text" placeholder="eg: Chateau de Woof">
           </div>
-          <form action="/dog-messages" method="post">
-            <input class="input" type="text" name="message" placeholder="Went to the dog park today" />
-            <button class="button mt-2">Ruff!</button>
-          </form>
         </div>
-        <div class="feed-stream">
-          <%- include('../partials/feed-stream', { feed: feed }) %>
+      </div>  
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label" style="color:white">Region</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <input class="input" type="text" placeholder="eg: Bordeaux">
+          </div>
+        </div>
+      </div> 
+      
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label" style="color:white">Type</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <input class="input" type="text" placeholder="eg: Red">
+          </div>
+        </div>
+      </div> 
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label" style="color:white">Grape</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <input class="input" type="text" placeholder="eg: Pinot Noir">
+          </div>
         </div>
       </div>
+      
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label" style="color:white">Quantity</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <input class="input" type="text" placeholder="eg: 3 X 750ml">
+          </div>
+        </div>
+      </div>
+  
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label" style="color:white">Notes</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <textarea class="textarea" placeholder="eg: Saving it for graduation party"></textarea>
+          </div>
+        </div>
+      </div>
+
+
     </div>
+    
   </div>
 
+  <div class="column" >
+    <button class = 'button is-success is-light is-large'>
+      <i class="fas fa-align-center"></i>
+      Add to Cellar
+      
+    </button>
+  </div>
+</div>
+</section>
 </body>
 
 <%- include('../partials/footer') %>
