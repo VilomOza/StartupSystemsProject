@@ -40,6 +40,7 @@ height:100%">
       <th><abbr title="Grape">Grape</abbr></th>
       <th><abbr title="Quantity">Quantity</abbr></th>
       <th><abbr title="Notes">Notes</abbr></th>
+      <th class = "text-end"><abbr title="Modify">Action</abbr></th>
     </tr>
   </thead>
   <tbody>
@@ -51,6 +52,9 @@ height:100%">
       <td><%= wines[i].data().grape %></td>
       <td><%= wines[i].data().quantity %></td>
       <td><%= wines[i].data().notes %></td>
+      <td class = "text-end"> 
+        <a href = "/edit/<%= wines[i].id %>" type = "button" class = "btn btn-light btn-small"><i class="bi bi-eye"></i>Edit</a>
+      </td>
     </tr>
   <% } %>
   </tbody>

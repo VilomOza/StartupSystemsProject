@@ -51,6 +51,21 @@ app.get("/dashboard", function(req,res){
   res.render("pages/dashboard")
 })
 
+app.get("/edit/:wineid", function(req,res){
+    const wineid = req.params.wineid
+
+    const sessionCookie = req.cookies.__session;
+
+    admin.auth()
+      .verifySessionCookie(sessionCookie, true)
+      .then(userData => {
+        const user_id = userData.sub;
+        return UserService.getWine(user_id, wineid)
+      }).then(wine => {
+      res.render("pages/edit", {wine: wine, wineid: wineid})
+    })
+})
+
 app.get("/cellar", function(req,res){
   const sessionCookie = req.cookies.__session;
 
@@ -60,7 +75,6 @@ app.get("/cellar", function(req,res){
       const id = userData.sub;
       return UserService.getWines(id)
     }).then(wines => {
-      console.log(wines)
     res.render("pages/cellar", {wines: wines})
   })
 
@@ -110,6 +124,20 @@ app.post("/addWine", async (req, res) => {
     .then(userData => {
       const id = userData.sub;
       UserService.addWine(id, wine_data)
+      res.end(JSON.stringify({ status: "success" }))
+    })
+})
+
+app.post("/editWine", async (req, res) => {
+  const sessionCookie = req.cookies.__session;
+  const wine_data = req.body
+  const wine_id = wine_data["id"]
+
+  admin.auth()
+    .verifySessionCookie(sessionCookie, true)
+    .then(userData => {
+      const user_id = userData.sub;
+      UserService.editWine(user_id, wine_id, wine_data)
       res.end(JSON.stringify({ status: "success" }))
     })
 })

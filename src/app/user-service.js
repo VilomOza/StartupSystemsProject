@@ -16,8 +16,18 @@ module.exports = {
     return snapshot.docs
   },
 
+  getWine: async (user_id, wine_id) => {
+    const wine = await db.collection('users').doc(user_id).collection('wines').doc(wine_id).get()
+    return wine.data()
+  },
+
   addWine: async (user_id, wine_data) => {
     await db.collection('users').doc(user_id)
       .collection('wines').add(wine_data)
-  }
+  },
+
+  editWine: async (user_id, wine_id, wine_data) => {
+    await db.collection('users').doc(user_id)
+      .collection('wines').doc(wine_id).set(wine_data)
+  },
 }
