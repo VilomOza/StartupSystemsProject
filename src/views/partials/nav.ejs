@@ -23,11 +23,10 @@
       <div id="navbarMenu" class="navbar-menu">
         <div class="navbar-end">
           <a href="/sessionLogout" class="navbar-item">
-            <span class="material-icons mr-2">person_outline</span> <%= email %> (log out)
+            <span class="material-icons mr-2">person_outline</span> <%= locals.email %> (log out)
           </a>
         </div>
       </div>
-    <% } else if(locals.hideSignIn) { %>
     <% } else { %>
       <div id="navbarMenu" class="navbar-menu">
         <div class="navbar-end">

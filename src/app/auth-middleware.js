@@ -10,8 +10,9 @@ module.exports = (req, res, next) => {
       .auth()
       .verifySessionCookie(sessionCookie, true /** checkRevoked */)
       .then(userData => {
-        console.log("Logged in:", userData.email);
         req.user = userData;
+        res.locals.email = userData.email;
+        console.log(res.locals)
         next();
       })
       .catch(error => {

@@ -5,7 +5,6 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const admin = require("firebase-admin");
 const app = express();
-const port = process.env.PORT || 8080;
 
 const serviceAccount = require("./../config/serviceAccountKey.json");
 
@@ -47,11 +46,12 @@ app.get("/sign-up", function (req, res) {
 });
 
 //Comment the next two blocks of code when sign in works
-app.get("/dashboard", function(req,res){
+app.get("/dashboard", authMiddleware, function(req,res){
+  console.log(res.locals)
   res.render("pages/dashboard")
 })
 
-app.get("/edit/:wineid", function(req,res){
+app.get("/edit/:wineid", authMiddleware, function(req,res){
     const wineid = req.params.wineid
 
     const sessionCookie = req.cookies.__session;
@@ -66,7 +66,7 @@ app.get("/edit/:wineid", function(req,res){
     })
 })
 
-app.get("/cellar", function(req,res){
+app.get("/cellar", authMiddleware, function(req,res){
   const sessionCookie = req.cookies.__session;
 
   admin.auth()
