@@ -15,7 +15,7 @@ background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 height: 100%;">
-  <h2 class="subtitle has-text-warning">Log in to your existing account</a></h2>
+  <h2 class="subtitle has-text-warning">Log in to your existing account</h2>
 
   <form id="login-form" class="hero-body" >
     
@@ -72,7 +72,7 @@ height: 100%;">
           body: JSON.stringify({ idToken: idToken })
         }).then(() => console.log('Success!'))
       }).then(() => {
-               window.location.assign('/dashboard');
+               window.location.assign('/add');
              })
         .catch((error) => {
           const errorCode = error.code;
