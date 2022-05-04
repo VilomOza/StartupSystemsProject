@@ -15,7 +15,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;">
-  <h2 class="subtitle has-text-warning">Sign Up for a new account</a></h2>
+  <h2 class="subtitle has-text-warning">Sign Up for a new account</h2>
   <h2 class="subtitle has-text-warning"><a href="/sign-in">Click here to sign in with an existing account</a></h2>
 
     <form id="login-form" class="hero-body" >
@@ -69,7 +69,7 @@
                headers: {'Content-Type': 'application/json'},
                body: JSON.stringify({idToken, signInType: 'register'})
              }).then(()=> {
-               window.location.assign('/dashboard')
+               window.location.assign('/add')
              })
           })
         })

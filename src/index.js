@@ -46,9 +46,22 @@ app.get("/sign-up", function (req, res) {
 });
 
 //Comment the next two blocks of code when sign in works
-app.get("/dashboard", authMiddleware, function(req,res){
-  console.log(res.locals)
-  res.render("pages/dashboard")
+app.get("/add", authMiddleware, function(req,res){
+  res.render("pages/add")
+})
+
+app.get("/cellar", authMiddleware, function(req,res){
+  const sessionCookie = req.cookies.__session;
+
+  admin.auth()
+    .verifySessionCookie(sessionCookie, true)
+    .then(userData => {
+      const id = userData.sub;
+      return UserService.getWines(id)
+    }).then(wines => {
+    res.render("pages/cellar", {wines: wines})
+  })
+
 })
 
 app.get("/edit/:wineid", authMiddleware, function(req,res){
@@ -64,20 +77,6 @@ app.get("/edit/:wineid", authMiddleware, function(req,res){
       }).then(wine => {
       res.render("pages/edit", {wine: wine, wineid: wineid})
     })
-})
-
-app.get("/cellar", authMiddleware, function(req,res){
-  const sessionCookie = req.cookies.__session;
-
-  admin.auth()
-    .verifySessionCookie(sessionCookie, true)
-    .then(userData => {
-      const id = userData.sub;
-      return UserService.getWines(id)
-    }).then(wines => {
-    res.render("pages/cellar", {wines: wines})
-  })
-
 })
 
 app.post("/sessionLogin", async (req, res) => {
@@ -128,7 +127,7 @@ app.post("/addWine", async (req, res) => {
     })
 })
 
-app.post("/editWine", async (req, res) => {
+app.put("/editWine", async (req, res) => {
   const sessionCookie = req.cookies.__session;
   const wine_data = req.body
   const wine_id = wine_data["id"]

@@ -15,8 +15,8 @@
 <div class="tabs is-toggle is-centered is-large" style="margin: 0%; background-color: rgb(56, 40, 40)">
   <ul>
     <li class="is-active" style="background-color: chocolate;">
-      <a href="/dashboard1">
-        
+      <a>
+
         <span style="text-align: center">Edit Wine</span>
       </a>
     </li>
@@ -154,7 +154,7 @@ height:100%">
               const notes = event.target.notes.value;
 
               fetch('/editWine',{
-                method: 'POST',
+                method: 'PUT',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                   id,
